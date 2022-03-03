@@ -170,7 +170,7 @@ hr {
 }
 
 .bg-image {
-    filter: blur(1px) brightness(0.10) saturate(0%);
+    filter: blur(1px) brightness(0.15) saturate(0%);
     position: fixed;
     top:0;
     left:0;
