@@ -147,7 +147,7 @@ a:hover {
 }
 
 .bottom-img:hover {
-	opacity:75%
+	mouse: pointer
 }
 
 @keyframes pulse {
