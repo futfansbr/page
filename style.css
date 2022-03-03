@@ -147,7 +147,7 @@ a:hover {
 }
 
 .bottom-img:hover {
-	mouse: pointer
+	cursor: pointer;
 }
 
 @keyframes pulse {
