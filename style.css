@@ -164,7 +164,6 @@ hr {
 
 	background-color: #fff;
 	border: 1px solid #fff;
-	
 	width: 75px;
 
 }
@@ -190,4 +189,8 @@ hr {
         width:auto;
         height: 100%;
     }
+}
+
+#load-initial {
+	display:block !important;
 }
