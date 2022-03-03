@@ -146,6 +146,11 @@ a:hover {
 	border: 2px solid #f0e800;
 }
 
+.bottom-img:hover {
+	opacity:75%;
+	cursor: pointer
+}
+
 @keyframes pulse {
 	0% {
 		transform: scale(0.96);
