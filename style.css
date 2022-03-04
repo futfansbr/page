@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
-
 body {
     background: #000;
 	color: #fff;
-	font-family: Karla, sans-serif;
+	font-family: 'Karla', sans-serif;
 	font-size: 18px;
 }
 
@@ -14,7 +12,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
-    position: relative;
+    	position: relative;
 
 }
 
@@ -173,12 +171,12 @@ hr {
 }
 
 .bg-image {
-    filter: brightness(0.25) saturate(0%);
-    position: fixed;
-    top:0;
-    left:0;
-    width:100%;     
-    height: auto;
+    	filter: brightness(0.25) saturate(0%);
+	position: fixed;
+	top:0;
+	left:0;
+	width:100%;     
+	height: auto;
   }
 
 @media (min-aspect-ratio: 16/9) {
