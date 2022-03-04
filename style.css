@@ -90,13 +90,13 @@ a:hover {
 	box-sizing: border-box;
 	margin: 20px auto;
 	color: #000;
-    background: #f0e800;
+    	background: #f0e800;
 	height: 70px;
 	text-align: center;
 	transition: all 0.15s;
 	border-radius: 100px;
-    padding:20px;
-    font-weight: 700;
+    	padding:20px;
+    	font-weight: 700;
 	transform: scale(1);
 	animation: pulse 0.75s infinite;
 }
@@ -105,7 +105,7 @@ a:hover {
 a:hover {
 	color: #f0e800;
 	border-color: #f0e800;
-    background: transparent;
+    	background: transparent;
 }
 
 .link-list-item-track {
