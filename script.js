@@ -12,8 +12,8 @@
 function Rastrear(){
     var x = document.getElementById("active-input").value;
     if (x.length === 13 || x.length === 16) {
-    var site = "https://www.muambator.com.br/pacotes/"
-    var format = site + x + "/detalhes/";
+    var site = "https://global.cainiao.com/detail.htm?mailNoList="
+    var format = site + x;
     window.open(format, '_blank');
     } else {
     document.getElementById("active-input").value = "";
