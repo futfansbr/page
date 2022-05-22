@@ -1009,13 +1009,15 @@ function carouselx() {
 document.querySelector("button[name='req']").addEventListener("click", function(){
 
   const x = document.querySelector("input[name='order']");
-  if (x.value.length === 13 || x.value.length === 16) {
   var site = "https://www.melhorrastreio.com.br/meu-rastreio/"
   var format = site + x.value;
+
+  if (x.value.length === 13 || x.value.length === 16) {
   window.open(format, '_blank');
-  }
+  } else {
   x.value = "";
   x.placeholder = "Não encontrado!";  
+  }
 
 });
 
