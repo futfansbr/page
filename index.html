@@ -70,12 +70,28 @@ justify-content: center;
 
 .title {
 
+margin: 1rem 0 0 0;
+
+}
+
+h2 {
+
 font-size: 2rem;
 text-align: center;
 line-height: auto;
 margin: 1rem 0 1rem 0;
 
 }
+
+h3 {
+
+font-size: 1.5rem;
+text-align: center;
+line-height: auto;
+margin: 1rem 0 1rem 0;
+
+}
+
 
 button {
 
@@ -250,9 +266,9 @@ margin-bottom:1rem;
 
 }
 
-.w3-content{width:100%}
+.w3-content{width:100%;}
 
-.img{width:100%}
+.w3-content > img {width:100%; border-radius: 0.75rem; cursor: pointer;}
 
 input:hover { background: #E4E4E4}
 input:focus { border: 2px solid #908F91; }
@@ -448,7 +464,7 @@ font-weight: 500;
 }
 
 details[open] summary:after {
-  transform: rotate(45deg);
+  transform: rotate(45deg) translateX(1px) translateY(-1px);
   font-size: 1.5rem;
 }
 
@@ -557,6 +573,7 @@ margin-top: 1rem;
   border-radius: 1rem;
   position: relative;
   padding: 1rem;
+  overflow-y: scroll;
 
 }
 
@@ -601,6 +618,36 @@ select {
 
 }
 
+table {
+
+text-align: center;
+margin-top: 1rem;
+border-collapse: collapse;
+width: 100%;
+
+}
+
+th {border:1px solid #000;border-bottom: 2px solid #000;}
+
+td {border:1px solid #000;}
+
+th, td {
+
+font-weight: 600;
+padding: 8px 0 8px 0;
+cursor: pointer;
+
+}
+
+td:hover {
+
+  background-color: #000;
+  color: #fff;
+
+}
+
+.margin { margin-top: 1rem; }
+
 </style>
 </head>
 
@@ -610,9 +657,143 @@ select {
   <div class="popup-box">
     <div class="popup-close" id="popup-close"></div>
     <div class="popup-content">
-      <h2 class="title">Tabela de medidas</h2>
-      <p>Estamos preparando tudo para você! Enquanto não fica pronto, que tal verificar pelo nosso WhatsApp? <a href="whatsapp://send/?phone=5555996421739">Clique aqui</a></p>
-    <!--<label for="Produtos">Selecione um produto:</label>
+      <h2>Tabela de medidas</h2>
+      <img src="https://www.adidas.com.br/on/demandware.static/-/Sites-adidas-BR-Library/default/dwd3484192/sizechart/size-M_tops.png" width="100px">
+      <h3>Camisas Torcedor <br>Masculino</h3>
+      <table>
+        <tr>
+          <th>Tam.</th>
+          <th>Comprim.</th>
+          <th>Largura</th>
+          <th>Altura</th>
+        </tr>
+        <tr>
+          <td>P</td>
+          <td>69-71 cm</td>
+          <td>53-55 cm</td>
+          <td>162-170 cm</td>
+        </tr>
+        <tr>
+          <td>M</td>
+          <td>71-73 cm</td>
+          <td>55-57 cm</td>
+          <td>170-176 cm</td>
+        </tr>
+        <tr>
+          <td>G</td>
+          <td>73-75 cm</td>
+          <td>57-58 cm</td>
+          <td>176-182 cm</td>
+        </tr>
+        <tr>
+          <td>GG</td>
+          <td>75-78 cm</td>
+          <td>58-60 cm</td>
+          <td>182-190 cm</td>
+        </tr>
+        <tr>
+          <td>XG</td>
+          <td>78-81 cm</td>
+          <td>60-62 cm</td>
+          <td>190-195 cm</td>
+        </tr>
+        <tr>
+          <td>2XG</td>
+          <td>81-83 cm</td>
+          <td>62-64 cm</td>
+          <td>192-197 cm</td>
+        </tr>
+      </table>
+
+      <h3>Camisas Torcedor <br>Feminino</h3>
+      <table>
+        <tr>
+          <th>Tam.</th>
+          <th>Comprim.</th>
+          <th>Largura</th>
+          <th>Altura</th>
+        </tr>
+        <tr>
+          <td>P</td>
+          <td>61-63 cm</td>
+          <td>40-41 cm</td>
+          <td>150-160 cm</td>
+        </tr>
+        <tr>
+          <td>M</td>
+          <td>63-66 cm</td>
+          <td>41-44 cm</td>
+          <td>160-165 cm</td>
+        </tr>
+        <tr>
+          <td>G</td>
+          <td>66-69 cm</td>
+          <td>44-47 cm</td>
+          <td>165-170 cm</td>
+        </tr>
+        <tr>
+          <td>GG</td>
+          <td>69-71 cm</td>
+          <td>47-50 cm</td>
+          <td>170-175 cm</td>
+        </tr>
+      </table>
+
+      <h3>Camisas Torcedor <br>Kids</h3>
+      <table>
+        <tr>
+          <th>Tam.</th>
+          <th>Comprim.</th>
+          <th>Largura</th>
+          <th>Altura</th>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td>44 cm</td>
+          <td>35 cm</td>
+          <td>95-105 cm</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td>47 cm</td>
+          <td>37 cm</td>
+          <td>105-115 cm</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td>50 cm</td>
+          <td>39 cm</td>
+          <td>115-125 cm</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td>53 cm</td>
+          <td>41 cm</td>
+          <td>125-135 cm</td>
+        </tr>
+        <tr>
+          <td>24</td>
+          <td>56 cm</td>
+          <td>43 cm</td>
+          <td>135-145 cm</td>
+        </tr>
+        <tr>
+          <td>26</td>
+          <td>59 cm</td>
+          <td>45 cm</td>
+          <td>145-155 cm</td>
+        </tr>
+        <tr>
+          <td>28</td>
+          <td>62 cm</td>
+          <td>47 cm</td>
+          <td>155-165 cm</td>
+        </tr>
+      </table>
+
+      <p class="margin">Ficou com alguma dúvida? Envie sua dúvida em nosso <a href="whatsapp://send/?phone=5555996421739">WhatsApp</a>.</p>
+      
+      <!--<label for="Produtos">Selecione um produto:</label>
     <select name="Produtos" id="cars">
     <option value="Futebol">Camisas de Futebol</option>
     <option value="NBA">Camisas de NBA</option>
