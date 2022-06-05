@@ -71,11 +71,11 @@ document.getElementById("popup-close").addEventListener("click", function(){
     document.getElementById("popup-align").style.display = "flex";
   });
 
-/*
+
   document.getElementById("iframe").addEventListener("click", function(){
   document.getElementById("notify").style.display = "none";
   });
-*/
+
 
 document.getElementById("req-pnome").addEventListener("change", function(){
 
