@@ -160,24 +160,28 @@ var wrapper = document.querySelector('.wrapper svg');
 
 
       var today = new Date();
+      var d = today.toLocaleString('pt-BR');
+
       var time = today.getHours() + ":" + today.getMinutes();
       var hour = today.getHours();
-      var d = today.toLocaleString('pt-BR');
-      var floor1 = Math.floor(Math.random() * 10);
-      var floor2 = Math.floor(Math.random() * (30 - 15 + 1) ) + 15;
+
+      var floor1 = Math.floor(Math.random() * (30 - 10 + 1) ) + 10;
+      var floor2 = Math.floor(Math.random() * (75 - 20 + 1) ) + 20;
 
       ativar();
 
       function ativar(){
-        if (hour >= 0 && hour <= 8){
+        if (hour >= 0 && hour < 8){
         } else {setTimeout(on, floor1 * 1000)}
   }
     
       function on() {
 
+        var hoje = new Date();
+        var data = hoje.toLocaleString('pt-BR');
         document.querySelector(".pedidos").style.display = "flex";
         document.querySelector(".user-check").innerHTML = "Um usuário acabou de solicitar um novo pedido."
-        document.querySelector(".check").innerHTML = d;
+        document.querySelector(".check").innerHTML = data;
         setTimeout(off, 6000);
 
       }
