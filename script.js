@@ -157,16 +157,49 @@ var wrapper = document.querySelector('.wrapper svg');
       
       // We are only adding and removing the 'active' class,
       // the entire animation is defined in the CSS code
+
+
+      var today = new Date();
+      var time = today.getHours() + ":" + today.getMinutes();
+      var hour = today.getHours();
+      var d = today.toLocaleString('pt-BR');
+      var floor1 = Math.floor(Math.random() * 10);
+      var floor2 = Math.floor(Math.random() * (30 - 15 + 1) ) + 15;
+
+      ativar();
+
+      function ativar(){
+        if (hour >= 0 && hour <= 8){
+        } else {setTimeout(on, floor1 * 1000)}
+  }
+    
+      function on() {
+
+        document.querySelector(".pedidos").style.display = "flex";
+        document.querySelector(".user-check").innerHTML = "Um usuário acabou de solicitar um novo pedido."
+        document.querySelector(".check").innerHTML = d;
+        setTimeout(off, 6000);
+
+      }
+    
+      function off() {
+        
+        document.querySelector(".pedidos").style.display = "none";
+        setTimeout(on, floor2 * 1000);
+
+      }
+      
+      
       draw();
 
       function draw() {
         wrapper.classList.add('active');
-        setTimeout(erase, 2500);
+        setTimeout(erase, 2800);
       }
       
       function erase() {
         wrapper.classList.remove('active');
-        setTimeout(draw, 2600);
+        setTimeout(draw, 2800);
       }
 
 var myIndex = 0;
