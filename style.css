@@ -697,5 +697,34 @@
         overflow: hidden;
         margin: -0.5rem 0 1rem 0;
 
-      
       }
+
+    .pedidos {
+
+      height: 6rem;
+      background: #E8E8E9;
+      color: #908F91;
+      text-align: left;
+      font-size: 1rem;
+      display: none;
+      font-weight: 600;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 500px;
+      min-width: 300px;
+      margin: 0 auto;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      gap: 1rem;
+      z-index: 90;
+    }
+
+    .check-icon {
+
+      height: 50px
+
+    }
