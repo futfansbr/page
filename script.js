@@ -165,8 +165,8 @@ var wrapper = document.querySelector('.wrapper svg');
       var time = today.getHours() + ":" + today.getMinutes();
       var hour = today.getHours();
 
-      var floor1 = Math.floor(Math.random() * (30 - 10 + 1) ) + 10;
-      var floor2 = Math.floor(Math.random() * (75 - 20 + 1) ) + 20;
+      var floor1 = Math.floor(Math.random() * (45 - 15 + 1) ) + 15;
+      var floor2 = Math.floor(Math.random() * (90 - 30 + 1) ) + 30;
 
       ativar();
 
@@ -179,10 +179,12 @@ var wrapper = document.querySelector('.wrapper svg');
 
         var hoje = new Date();
         var data = hoje.toLocaleString('pt-BR');
+        var id = Math.floor(Math.random() * 4);
         document.querySelector(".pedidos").style.display = "flex";
-        document.querySelector(".user-check").innerHTML = "Um usuário acabou de solicitar um novo pedido."
+        document.querySelector(".img-check").setAttribute("src", "../post/" + id + ".png");
+        document.querySelector(".user-check").innerHTML = "Um usuário acabou de enviar a solicitação de um novo pedido."
         document.querySelector(".check").innerHTML = data;
-        setTimeout(off, 6000);
+        setTimeout(off, 8000);
 
       }
     
