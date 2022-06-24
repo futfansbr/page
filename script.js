@@ -171,7 +171,7 @@ var wrapper = document.querySelector('.wrapper svg');
       ativar();
 
       function ativar(){
-        if (hour >= 0 && hour < 8){
+        if (hour >= 1 && hour < 8){
         } else {setTimeout(on, floor1 * 1000)}
   }
     
