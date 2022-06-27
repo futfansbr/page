@@ -82,7 +82,7 @@
 var video = document.getElementById('video');
 var canais = document.getElementById('canais');
 
-stream(canais[2].value);
+stream();
 
 canais.addEventListener("change", function(){
     stream(canais.value);
@@ -118,7 +118,7 @@ video.play();
 
 }
 
-function stream(x){
+function stream(){
   if (Hls.isSupported()) {
     var hls = new Hls();
     // bind them together
@@ -126,7 +126,7 @@ function stream(x){
     hls.on(Hls.Events.MEDIA_ATTACHED, function () {
       console.log('video and hls.js are now bound together !');
       //hls.loadSource(x + '.m3u8');
-      hls.loadSource('https://raw.githubusercontent.com/futfansbr/page/main/Globo%20RBS%20TV%20Porto%20Alegre%20HD.m3u8');
+      hls.loadSource('https://raw.githubusercontent.com/futfansbr/page/main/str/Telecine%Premium%HD.m3u8');
       
       hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
         console.log(
