@@ -82,7 +82,7 @@
 var video = document.getElementById('video');
 var canais = document.getElementById('canais');
 
-stream();
+stream(canais[2].value);
 
 canais.addEventListener("change", function(){
     stream(canais.value);
@@ -118,16 +118,14 @@ video.play();
 
 }
 
-function stream(){
+function stream(x){
   if (Hls.isSupported()) {
     var hls = new Hls();
     // bind them together
     hls.attachMedia(video);
     hls.on(Hls.Events.MEDIA_ATTACHED, function () {
       console.log('video and hls.js are now bound together !');
-      //hls.loadSource(x + '.m3u8');
-      hls.loadSource('https://raw.githubusercontent.com/futfansbr/page/main/str/Telecine%Premium%HD.m3u8');
-      
+      hls.loadSource('https://raw.githubusercontent.com/futfansbr/page/main/str/' + x + '.m3u8');
       hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
         console.log(
           'manifest loaded, found ' + data.levels.length + ' quality level'
