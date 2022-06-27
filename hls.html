@@ -12,11 +12,11 @@
     <title>Transmissão</title>
 
     <style>
-
+    /*
     video::-webkit-media-controls {
     display: none;
     }
-
+    */
     </style>
 
     <script src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js" type="text/javascript"></script>
@@ -75,7 +75,7 @@ var canais = document.getElementById('canais');
 
 canais.addEventListener("change", function(){
 
-  var format = 'https://raw.githubusercontent.com/futfansbr/page/main/str/' + canais.value + '.m3u8'
+  var format = 'http://raw.githubusercontent.com/futfansbr/page/main/str/' + canais.value + '.m3u8';
   Play(format);
 
 });
@@ -88,20 +88,24 @@ function delay(x){
 
 var player = new Clappr.Player({
 
+  source: "",
+  autoPlay: true,
   height: "100%",
   width: "100%",
+  parentId: "#player-wrapper",
+  plugins: [Clappr.FlasHLS],
   
 });
 
 player.attachTo(playerElement);
 
-var format = 'https://raw.githubusercontent.com/futfansbr/page/main/str/' + canais[2].value + '.m3u8';
+var format = 'http://raw.githubusercontent.com/futfansbr/page/main/str/' + canais[2].value + '.m3u8';
 Play(format);
 
 function Play(x){
 
   player.load(x);
-  setTimeout(delay, 2500);
+  //setTimeout(delay, 2500);
 
 }
 
