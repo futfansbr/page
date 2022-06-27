@@ -75,7 +75,7 @@ var canais = document.getElementById('canais');
 
 canais.addEventListener("change", function(){
 
-  var format = 'https://raw.githubusercontent.com/futfansbr/page/main/str/' + canais.value + '.m3u8';
+  var format = '../str/' + canais.value + '.m3u8';
   Play(format);
 
 });
@@ -98,7 +98,7 @@ var player = new Clappr.Player({
 
 player.attachTo(playerElement);
 
-var format = 'https://raw.githubusercontent.com/futfansbr/page/main/str/' + canais[2].value + '.m3u8';
+var format = '../str/' + canais[2].value + '.m3u8';
 Play(format);
 
 function Play(x){
