@@ -8,14 +8,7 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script>
-    if (Hls.isSupported()) {
-    console.log('hello hls.js!');
-    }
-    </script>
-
+  
     <title>Transmissão</title>
 
     <style>
@@ -25,6 +18,10 @@
     }
 
     </style>
+
+    <script src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/clappr.level-selector/latest/level-selector.min.js" type="text/javascript"></script>
+    <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.min.js"></script>
 </head>
 
 <body style="background: #000">
@@ -33,7 +30,7 @@
 
 <h2 style="color:#fff">Transmissão</h2>
 
-<video id="video" style="width: 100%; background-color: #000; aspect-ratio: 16/9;border-radius: 0.75rem;cursor: pointer;" controls></video>
+<div id="player-wrapper" style="width: 100%; background-color: #000; aspect-ratio: 16/9;border-radius: 0.75rem;cursor: pointer;"></div>
 
 <select id="canais" style="margin-top: 1rem; border: 3px solid #151515;background-color: #151515;color:#fff;">
 <option value="" disabled selected>Selecione um Canal</option>
@@ -69,84 +66,45 @@
 
 </select>
 
-<span id="teste" style="color:#fff; margin-top:1rem; text-align: center;display: flex;justify-content: center;"></span>
-<button style="margin-top: 1rem; border-color:#151515;background-color: #151515;color:#fff;" id="Reload">Reload</button>
-<div class="row">
-    <button style="margin-top: 1rem; border-color:#151515;background-color: #151515;color:#fff;" id="Full">Full Screen</button>
-    <button style="margin-top: 1rem; border-color:#151515;background-color: #151515;color:#fff;" id="Mute">Mute</button>
 </div>
 
-</div>
 <script>
 
-var video = document.getElementById('video');
+var playerElement = document.getElementById("player-wrapper");
 var canais = document.getElementById('canais');
 
-stream(canais[2].value);
-
 canais.addEventListener("change", function(){
-    stream(canais.value);
-});
 
-document.getElementById("Full").addEventListener("click", function(){
-
-video.requestFullscreen();
-video.webkitRequestFullscreen();
+  var format = 'https://raw.githubusercontent.com/futfansbr/page/main/str/' + canais.value + '.m3u8'
+  Play(format);
 
 });
 
-document.getElementById("Reload").addEventListener("click", function(){
-    
-   stream(canais.value);
-    
-});
-
-document.getElementById("Mute").addEventListener("click", function(){
-    if (video.muted === true) {
-        video.muted = false;
-        document.getElementById("Mute").innerHTML = "Mute"
-
-    } else {
-        video.muted = true;
-        document.getElementById("Mute").innerHTML = "Unmute"
-    }
-});
-
-function delay(){
-
-video.play();
+function delay(x){
+  
+  player.play()
 
 }
 
-function stream(x){
-  if (Hls.isSupported()) {
-    var hls = new Hls();
-    // bind them together
-    hls.attachMedia(video);
-    hls.on(Hls.Events.MEDIA_ATTACHED, function () {
-      console.log('video and hls.js are now bound together !');
-      hls.loadSource('https://raw.githubusercontent.com/futfansbr/page/main/str/' + x + '.m3u8');
-      hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
-        console.log(
-          'manifest loaded, found ' + data.levels.length + ' quality level'
-        );
-      });
-      video.pause();
-      setTimeout(delay, 2500);
-    });
-  }
+var player = new Clappr.Player({
+
+  height: "100%",
+  width: "100%",
+  
+});
+
+player.attachTo(playerElement);
+
+var format = 'https://raw.githubusercontent.com/futfansbr/page/main/str/' + canais[2].value + '.m3u8';
+Play(format);
+
+function Play(x){
+
+  player.load(x);
+  setTimeout(delay, 2500);
+
 }
-
-video.ontimeupdate = function() {myFunction()};
-
-function myFunction() {
-
-    document.getElementById("teste").innerHTML = "Buffer: " + (video.buffered.end(0) - video.currentTime);
-}
-
-
 
 </script>
-
 </body>
 </html>
