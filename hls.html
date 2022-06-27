@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script>
+    if (Hls.isSupported()) {
+    console.log('hello hls.js!');
+    }
+    </script>
+
+    <title>Transmissão</title>
+
+    <style>
+
+    video::-webkit-media-controls {
+    display: none;
+    }
+
+    </style>
+</head>
+
+<body style="background: #000">
+
+<div class="container">
+
+<h2 style="color:#fff">Transmissão</h2>
+
+<video id="video" style="width: 100%; background-color: #000; aspect-ratio: 16/9;border-radius: 0.75rem;cursor: pointer;" controls></video>
+
+<select id="canais" style="margin-top: 1rem; border: 3px solid #151515;background-color: #151515;color:#fff;">
+<option value="" disabled selected>Selecione um Canal</option>
+<option value="Globo RBS TV Porto Alegre FHD">Globo RBS TV Porto Alegre FHD</option>
+<option value="Globo RBS TV Porto Alegre HD">Globo RBS TV Porto Alegre HD</option>
+<option value="Globo RBS TV Porto Alegre SD">Globo RBS TV Porto Alegre SD</option>
+<option value="Globo RBS TV Santa Maria FHD">Globo RBS TV Santa Maria FHD</option>
+<option value="Globo RBS TV Santa Maria HD">Globo RBS TV Santa Maria HD</option>
+<option value="Globo RBS TV Santa Maria SD">Globo RBS TV Santa Maria SD</option>
+<option value="Globo SP FHD">Globo SP FHD</option>
+<option value="Globo SP HD">Globo SP HD</option>
+<option value="Globo SP SD">Globo SP SD</option>
+<option value="Telecine Action HD">Telecine Action HD</option>
+<option value="Telecine Cult HD">Telecine Cult HD</option>
+<option value="Telecine Fun HD">Telecine Fun HD</option>
+<option value="Telecine Pipoca HD">Telecine Pipoca HD</option>
+<option value="Telecine Premium HD">Telecine Premium HD</option>
+<option value="Telecine Touch HD">Telecine Touch HD</option>
+<option value="Premiere 1 HD" disabled>Premiere 1 HD</option>
+<option value="Premiere 2 HD" disabled>Premiere 2 HD</option>
+<option value="Premiere 3 HD" disabled>Premiere 3 HD</option>
+<option value="Premiere 4 HD" disabled>Premiere 4 HD</option>
+<option value="Premiere 5 HD" disabled>Premiere 5 HD</option>
+<option value="Premiere 6 HD" disabled>Premiere 6 HD</option>
+<option value="Premiere 7 HD" disabled>Premiere 7 HD</option>
+<option value="Conmebol TV 1 HD" disabled>Conmebol TV 1 HD</option>
+<option value="Conmebol TV 2 HD" disabled>Conmebol TV 2 HD</option>
+<option value="Conmebol TV 3 HD" disabled>Conmebol TV 3 HD</option>
+<option value="Conmebol TV 4 HD" disabled>Conmebol TV 4 HD</option>
+<option value="SporTV 1 HD" disabled>SporTV 1 HD</option>
+<option value="SporTV 2 HD" disabled>SporTV 2 HD</option>
+<option value="SporTV 3 HD" disabled>SporTV 3 HD</option>
+
+</select>
+
+<span id="teste" style="color:#fff; margin-top:1rem; text-align: center;display: flex;justify-content: center;"></span>
+<button style="margin-top: 1rem; border-color:#151515;background-color: #151515;color:#fff;" id="Reload">Reload</button>
+<div class="row">
+    <button style="margin-top: 1rem; border-color:#151515;background-color: #151515;color:#fff;" id="Full">Full Screen</button>
+    <button style="margin-top: 1rem; border-color:#151515;background-color: #151515;color:#fff;" id="Mute">Mute</button>
+</div>
+
+</div>
+<script>
+
+var video = document.getElementById('video');
+var canais = document.getElementById('canais');
+
+stream(canais.value);
+
+canais.addEventListener("change", function(){
+    stream(canais.value);
+});
+
+document.getElementById("Full").addEventListener("click", function(){
+
+video.requestFullscreen();
+video.webkitRequestFullscreen();
+
+});
+
+document.getElementById("Reload").addEventListener("click", function(){
+    
+   stream(canais.value);
+    
+});
+
+document.getElementById("Mute").addEventListener("click", function(){
+    if (video.muted === true) {
+        video.muted = false;
+        document.getElementById("Mute").innerHTML = "Mute"
+
+    } else {
+        video.muted = true;
+        document.getElementById("Mute").innerHTML = "Unmute"
+    }
+});
+
+function delay(){
+
+video.play();
+
+}
+
+function stream(x){
+  if (Hls.isSupported()) {
+    var hls = new Hls();
+    // bind them together
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+      console.log('video and hls.js are now bound together !');
+      hls.loadSource('../hls/' + x + '.m3u8');
+      hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+        console.log(
+          'manifest loaded, found ' + data.levels.length + ' quality level'
+        );
+      });
+      video.pause();
+      setTimeout(delay, 2500);
+    });
+  }
+}
+
+video.ontimeupdate = function() {myFunction()};
+
+function myFunction() {
+
+    document.getElementById("teste").innerHTML = "Buffer: " + (video.buffered.end(0) - video.currentTime);
+}
+
+
+
+</script>
+
+</body>
+</html>
