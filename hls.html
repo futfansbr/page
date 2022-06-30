@@ -28,7 +28,7 @@
 
     function callOtherDomain() {
       if(invocation) {
-        invocation.open('GET', url, true);
+        invocation.open('CONNECT', url, true);
         invocation.onreadystatechange = handler;
         invocation.send();
       }
