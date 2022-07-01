@@ -8,45 +8,52 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
   
     <title>Transmissão</title>
 
     <style>
-    /*
-    video::-webkit-media-controls {
+    
+    video::-webkit-media-controls-timeline,
+    video::-webkit-media-controls-time-remaining-display,
+    video::-webkit-media-controls-current-time-display,
+    video::-webkit-media-controls-return-to-realtime-button,
+    video::-webkit-media-controls-rewind-button,
+    video::-webkit-media-controls-toggle-closed-captions-button {
     display: none;
     }
-    */
+
+    button {border: 3px solid #101010;background-color: #101010;color:#fff; font-weight: 500;}
+    button:hover {background-color: #202020; border: 3px solid #202020;color:#fff;}
+    select {margin-top: 1rem;border: 3px solid #101010;background-color: #101010;color:#fff;text-align: left; font-weight: 500;text-align-last:center;}
+    select:hover {background-color: #202020; border: 3px solid #202020;color:#fff;}
+    
+    #circlecheck {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    }
+
+
+
     </style>
 
-    <script src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/clappr.level-selector/latest/level-selector.min.js" type="text/javascript"></script>
-    <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.min.js"></script>
-    <script>
-    var invocation = new XMLHttpRequest();
-    var url = 'https://raw.githubusercontent.com/futfansbr/page/main/str/';
+<script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@clappr/stats-plugin@latest/dist/clappr-stats.min.js"></script>
 
-    function callOtherDomain() {
-      if(invocation) {
-        invocation.open('CONNECT', url, true);
-        invocation.onreadystatechange = handler;
-        invocation.send();
-      }
-    }
-    callOtherDomain();
-    </script>
 </head>
 
 <body style="background: #000">
 
 <div class="container">
 
-<h2 style="color:#fff">Transmissão</h2>
+<h2 style="color:#fff; display: flex;align-items: center;gap:1rem;justify-content: center;">Transmissão</h2>
 
-<div id="player-wrapper" style="width: 100%; background-color: #000; aspect-ratio: 16/9;border-radius: 0.75rem;cursor: pointer;"></div>
+<!--<div id="player-wrapper" style="width: 100%; background-color: #000; aspect-ratio: 16/9;border-radius: 0.75rem;cursor: pointer;"></div>-->
+<video id="video" style="width: 100%; background-color: #000; aspect-ratio: 16/9;border-radius: 0.75rem;cursor: pointer;" controls controlsList="noplaybackrate" autoplay></video>
 
-<select id="canais" style="margin-top: 1rem; border: 3px solid #151515;background-color: #151515;color:#fff;">
-<option value="" disabled selected>Selecione um Canal</option>
+<select id="canais">
+<option value="Desativado" disabled selected>Selecione um Canal</option>
 <option value="Globo RBS TV Porto Alegre FHD">Globo RBS TV Porto Alegre FHD</option>
 <option value="Globo RBS TV Porto Alegre HD">Globo RBS TV Porto Alegre HD</option>
 <option value="Globo RBS TV Porto Alegre SD">Globo RBS TV Porto Alegre SD</option>
@@ -115,7 +122,7 @@
 <option value="SporTV 3 SD">SporTV 3 SD</option>
 <option value="Conmebol TV 1 FHD">Conmebol TV 1 FHD</option>
 <option value="Conmebol TV 1 HD">Conmebol TV 1 HD</option>
-<option value="Conmebol TV 1 SDC">onmebol TV 1 SD</option>
+<option value="Conmebol TV 1 SDC">Conmebol TV 1 SD</option>
 <option value="Conmebol TV 2 FHD">Conmebol TV 2 FHD</option>
 <option value="Conmebol TV 2 HD">Conmebol TV 2 HD</option>
 <option value="Conmebol TV 2 SD">Conmebol TV 2 SD</option>
@@ -148,12 +155,179 @@
 <option value="Premiere 7 SD">Premiere 7 SD</option>
 </select>
 
+<select id="radios">
+  <option value="Desativado" disabled selected>Selecione uma Rádio</option>
+  <option value="https://liverdgaupoa.rbsdirect.com.br/primary/gaucha_rbs.sdp/playlist.m3u8">Gaúcha FM Porto Alegre</option>
+  <option value="http://liverdatlpoa.rbsdirect.com.br/primary/atl_poa.sdp/playlist.m3u8">Atlantida FM Porto Alegre</option>
+  <option value="http://liverdatlsm.rbsdirect.com.br/primary/atl_sma.sdp/playlist.m3u8">Atlantida FM Santa Maria</option>
+  <option value="http://liverdatlbeiramar.rbsdirect.com.br/primary/atl_tra.sdp/playlist.m3u8">Atlantida FM Beira Mar</option>
+  <option value="http://167809y.ha.azioncdn.net/primary/atl_fln.sdp/playlist.m3u8">Atlantida FM Florianópolis</option>
+  <option value="http://187809y.ha.azioncdn.net/primary/atl_joi.sdp/playlist.m3u8">Atlantida FM Joinville</option>
+  <option value="http://157809y.ha.azioncdn.net/primary/atl_cha.sdp/playlist.m3u8">Atlantida FM Chapecó</option>
+  </select>
+
+<div style="display: flex;gap:1rem; flex-direction: column;margin-top: 1rem;justify-content: center;align-items: center;">
+<button id="Reload">RELOAD</button>
+<div style="display: flex;gap:1rem; flex-direction: row;margin-top: 1rem;justify-content: center;align-items: center;">
+<span id="check" style="color: #fff"></span><span id="circlecheck"></span></div>
+<span id="msg" style="color: #fff;"></span>
+</div>
+
 </div>
 
 <script>
 
-var playerElement = document.getElementById("player-wrapper");
 var canais = document.getElementById('canais');
+var radios = document.getElementById('radios');
+var media = 0;
+
+function streamt(source){
+  var video = document.getElementById('video');
+  video.poster = "https://c.tenor.com/YG_GREUD9OwAAAAC/tv-static.gif";
+  var videoSrc = "https://raw.githubusercontent.com/futfansbr/page/main/str/" + source + ".m3u8";
+  if (Hls.isSupported()) {
+    var hls = new Hls();
+    hls.loadSource(videoSrc);
+    hls.attachMedia(video);
+    video.play();
+    media = 0;
+  }
+  else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = videoSrc;
+  }
+}
+
+function streamr(source){
+  var video = document.getElementById('video');
+  video.poster = "https://c.tenor.com/YG_GREUD9OwAAAAC/tv-static.gif";
+  var videoSrc = source;
+  if (Hls.isSupported()) {
+    var hls = new Hls();
+    hls.loadSource(videoSrc);
+    hls.attachMedia(video);
+    video.play();
+    media = 1;
+  }
+  else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = videoSrc;
+  }
+}
+
+
+document.getElementById("Reload").addEventListener("click", function(){
+
+  if (media === 0){
+    if (canais.value === "Desativado"){
+
+      streamt(canais[6].value);
+
+      } else {
+
+      streamt(canais.value);
+
+      }
+  } else {
+
+    if (radios.value === "Desativado"){
+
+    streamr(radios[1].value);
+
+    } else {
+
+    streamr(radios.value);
+
+    }
+
+  }
+  
+});
+
+video.addEventListener("timeupdate", function(){
+  
+  var message = document.getElementById("msg");
+  var check = document.getElementById("check");
+  var icon = document.getElementById("circlecheck");
+  var time = video.duration - video.currentTime;
+
+  var ifConnected = window.navigator.onLine;
+  if (ifConnected) {
+    check.innerHTML = "Connection available";
+    icon.style.backgroundColor = "#04AA6D";
+
+  } else {
+    check.innerHTML = "Connection not available";
+    icon.style.background = "#ff0000";
+  }
+
+  if ( video.currentTime === 0 ) {
+
+    message.innerHTML = "";
+
+  } else {
+
+    message.innerHTML = "Buffer: " + Intl.NumberFormat('en-US', {style: 'decimal'}).format(time);
+    
+  }
+
+  if( video.paused ) {
+        video.play();
+      }
+      else {
+        video.play();
+      }
+});
+
+canais.addEventListener("change", function(){
+
+radios.value = radios[0].value;
+streamt(canais.value);
+
+});
+
+radios.addEventListener("change", function(){
+
+  canais.value = canais[0].value;
+  streamr(radios.value);
+
+});
+
+streamt(canais[6].value);
+
+/*
+
+document.getElementById("Picture").addEventListener("click", function(){
+
+  video.requestPictureInPicture();
+
+});
+
+document.getElementById("Mute").addEventListener("click", function(){
+
+  if (video.muted){
+
+    video.muted = false;
+    document.getElementById("Mute").innerHTML = "Mute";
+
+  } else {
+
+    video.muted = true;
+    document.getElementById("Mute").innerHTML = "Unmute";
+
+  }
+
+});
+
+document.getElementById("Full").addEventListener("click", function(){
+
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.webkitRequestFullscreen) {
+    video.webkitRequestFullscreen();
+  } else if (video.msRequestFullscreen) {
+    video.msRequestFullscreen();
+  }
+
+});
 
 canais.addEventListener("change", function(){
 
@@ -162,26 +336,17 @@ canais.addEventListener("change", function(){
 
 });
 
-function delay(x){
-  
-  player.play()
-
-}
-
 var player = new Clappr.Player({
-
-  source: "",
-  autoPlay: true,
-  height: "100%",
-  width: "100%",
-  plugins: [Clappr.FlasHLS],
   
+  source: "https://raw.githubusercontent.com/futfansbr/page/main/str/" + canais[2].value + ".m3u8",
+  autoPlay: true,
+  parentId: "#player-wrapper",
+  width: "100%",
+  height: "100%",
+
 });
 
 player.attachTo(playerElement);
-
-var format = 'https://raw.githubusercontent.com/futfansbr/page/main/str/' + canais[2].value + '.m3u8';
-Play(format);
 
 function Play(x){
 
@@ -189,6 +354,8 @@ function Play(x){
   //setTimeout(delay, 2500);
 
 }
+
+*/
 
 </script>
 </body>
