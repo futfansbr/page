@@ -184,7 +184,8 @@ var media = 0;
 function streamt(source){
   var video = document.getElementById('video');
   video.poster = "https://c.tenor.com/YG_GREUD9OwAAAAC/tv-static.gif";
-  var videoSrc = "https://raw.githubusercontent.com/futfansbr/page/main/str/" + source + ".m3u8";
+  //var videoSrc = "https://raw.githubusercontent.com/futfansbr/page/main/str/" + source + ".m3u8";
+  var videoSrc = source;
   if (Hls.isSupported()) {
     var hls = new Hls();
     hls.loadSource(videoSrc);
@@ -291,7 +292,8 @@ radios.addEventListener("change", function(){
 
 });
 
-streamt(canais[6].value);
+//streamt(canais[6].value);
+streamt("http://156.146.42.200/auth/fDoj_4FoJE9bax_gtd8hn_XlO9ybRkTo8iW3ZTUi7f29xV1Jh3acRSpSa4s03sHA2cwFExwcB_OHyvk9Nmz1IGHiccoFoatEdQdmb-1RMO_54bNTMxzo3MwmTQEoFkPaGBdjAt74kxmeETeazOQ_ODvqY1Z0XQEZyhTD-HXAJ7mc0O0UoWKzlTc4eJL584NR1GmviZWjD8KvQ7y_Fsw6UxWl4cWpRh6hi3xhhl5b8iBphuc07BWjRRWlsZ84vVjyq8KC5L5U4-p2DLTf1gZtfF8fv4ZbnELftLmcLIAjRAQO0-UG2zdZ1SnnUeIxsjC4X6DDnq0lRvNyhqh0PSJ5iZLWXFtlJGGbaj7B6GbBbm8i81_XjwG2a3gP_dj70ze4MyPPr4Ew04-cmitp5kRVjCuIVBRp03lrfLbHa5t8JAXkQfSVQtAszVnvTZ_S3-Mw-L9t97iOP1xuPzmOOxb_oMF9t0dePpo8bmkvNcxsESMDCuOo8_w2eO-keRHtAp33mAb8fUl0CD53IlBXrdOzEEO2zEgVcEZyiyRXob0PXTccN26k87FHRMBEgyGEGCtMH_hNJNlT2jjrAW8zdv3viEwlaaywbleldbRapOMDPiD2B3vwmYjcr4EX3l2ZBxwG");
 
 /*
 
