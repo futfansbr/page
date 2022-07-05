@@ -184,8 +184,7 @@ var media = 0;
 function streamt(source){
   var video = document.getElementById('video');
   video.poster = "https://c.tenor.com/YG_GREUD9OwAAAAC/tv-static.gif";
-  //var videoSrc = "https://raw.githubusercontent.com/futfansbr/page/main/str/" + source + ".m3u8";
-  var videoSrc = "http://38.94.38.21/auth/U4IQF-ozPiNhRDR4At69Jp32BHWETJN673FTk930JtXxTkfVKXAEl30jDVd8z9GdrS7kte3Tng2aEYGL-zu0zfcmW9qO7j4E44grA5kHnMxDM-txc6Oh6kyD3575uyi7n80ATGQwo4sEHIFqxSn5QECSHAN2ekW1wO0UaAp6LTxCo4yrIdVHnUzptvyY41gKQzQc5JcmCKfvpTdSnyWa5LpyXyf9gEHsYPZsSmTquCrhNcsnu4zZjP7bDhCI50MZFTnBhCY_-lis93jAckY_Ssddyazk2h-6EPDimie47RpBUx_KQwHDJKeC0KDOFAbVfYTM8HtNS0UfcPejjnHmpNzN3v2SgxcVeNk_3B5abcp-3Flm-1u3kKLVe9Jt7Erty0NqLemwaQcSj72DovIj-YkQRedATdRuiSCg5FwKJnVgKiqSN7I2YSsM9bobGpSEV0wnBqbXZdUJcR41RefxHIVRlSMrv9s84_SVfb0JtViZ_hU5TenLUiG53HBDu8FmGKdVOiMzTx6iywLTFJMv8wKMlQER_cSqZpqYDFWzkcehJmYZ9gtvRe5WHNEBc4sDxANIEiGqCY9V6aNG4HbQJCSKpEYtTrVmWRHEg8xZmZA";
+  var videoSrc = "https://raw.githubusercontent.com/futfansbr/page/main/str/" + source + ".m3u8";
   if (Hls.isSupported()) {
     var hls = new Hls();
     hls.loadSource(videoSrc);
